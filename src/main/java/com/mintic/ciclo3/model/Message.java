@@ -4,18 +4,32 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-@Table(name = "boat")
+@Table(name = "message")
 public class Message implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String message;
+  private String messageText;
+
+  @ManyToOne
+  @JoinColumn(name = "clientId")
+  @JsonIgnoreProperties("messages")
+  private Client client;
+
+  @ManyToOne
+  @JoinColumn(name = "boatId")
+  @JsonIgnoreProperties("messages")
+  private Boat boat;
 
   public Integer getId() {
     return id;
@@ -25,12 +39,28 @@ public class Message implements Serializable {
     this.id = id;
   }
 
-  public String getMessage() {
-    return message;
+  public String getMessageText() {
+    return messageText;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setMessageText(String messageText) {
+    this.messageText = messageText;
+  }
+
+  public Client getClient() {
+    return client;
+  }
+
+  public void setClient(Client client) {
+    this.client = client;
+  }
+
+  public Boat getBoat() {
+    return boat;
+  }
+
+  public void setBoat(Boat boat) {
+    this.boat = boat;
   }
 
 }

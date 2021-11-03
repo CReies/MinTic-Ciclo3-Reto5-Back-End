@@ -1,12 +1,11 @@
 package com.mintic.ciclo3.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,17 +14,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
-@Table(name = "category")
-public class Category implements Serializable {
+@Table(name = "boat")
+public class Boat implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
+  private String brand;
   private String name;
+  private Integer year;
   private String description;
 
-  @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "category")
-  @JsonIgnoreProperties("categories")
-  public List<Boat> boats;
+  @ManyToOne
+  @JoinColumn(name = "categoryId")
+  @JsonIgnoreProperties("boats")
+  private Category category;
 
   public Integer getId() {
     return id;
@@ -33,6 +35,14 @@ public class Category implements Serializable {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public String getBrand() {
+    return brand;
+  }
+
+  public void setBrand(String brand) {
+    this.brand = brand;
   }
 
   public String getName() {
@@ -43,6 +53,14 @@ public class Category implements Serializable {
     this.name = name;
   }
 
+  public Integer getYear() {
+    return year;
+  }
+
+  public void setYear(Integer year) {
+    this.year = year;
+  }
+
   public String getDescription() {
     return description;
   }
@@ -51,12 +69,12 @@ public class Category implements Serializable {
     this.description = description;
   }
 
-  public List<Boat> getBoats() {
-    return boats;
+  public Category getCategory() {
+    return category;
   }
 
-  public void setBoats(List<Boat> boats) {
-    this.boats = boats;
+  public void setCategory(Category category) {
+    this.category = category;
   }
 
 }

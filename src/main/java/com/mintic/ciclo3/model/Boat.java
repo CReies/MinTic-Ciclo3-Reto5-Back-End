@@ -37,7 +37,7 @@ public class Boat implements Serializable {
   private List<Message> messages;
 
   @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "boat")
-  @JsonIgnoreProperties("boats")
+  @JsonIgnoreProperties("boat")
   private List<Reservation> reservations;
 
   public Integer getId() {

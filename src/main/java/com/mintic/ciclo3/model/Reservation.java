@@ -22,11 +22,11 @@ public class Reservation implements Serializable {
   private Integer idReservation;
   private Date startDate;
   private Date devolutionDate;
-  private String status;
+  private String status = "created";
 
   @ManyToOne
   @JoinColumn(name = "boatId")
-  @JsonIgnoreProperties({ "reservations", "client" })
+  @JsonIgnoreProperties({ "reservations" })
   private Boat boat;
 
   @ManyToOne

@@ -22,8 +22,8 @@ public class Boat implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String brand;
   private String name;
+  private String brand;
   private Integer year;
   private String description;
 
@@ -33,7 +33,7 @@ public class Boat implements Serializable {
   private Category category;
 
   @OneToMany(cascade = { CascadeType.PERSIST }, mappedBy = "boat")
-  @JsonIgnoreProperties("boats")
+  @JsonIgnoreProperties("boat")
   private List<Message> messages;
 
   @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "boat")
@@ -48,20 +48,20 @@ public class Boat implements Serializable {
     this.id = id;
   }
 
-  public String getBrand() {
-    return brand;
-  }
-
-  public void setBrand(String brand) {
-    this.brand = brand;
-  }
-
   public String getName() {
     return name;
   }
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getBrand() {
+    return brand;
+  }
+
+  public void setBrand(String brand) {
+    this.brand = brand;
   }
 
   public Integer getYear() {

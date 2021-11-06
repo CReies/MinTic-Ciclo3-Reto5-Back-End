@@ -36,6 +36,7 @@ public class BoatService {
   }
 
   public Boat edit(Boat b) {
+    b.setCategory(boatRepository.getBoat(b.getId()).get().getCategory());
     return boatRepository.edit(b);
   }
 

@@ -34,4 +34,12 @@ public class CategoryService {
       }
     }
   }
+
+  public Category edit(Category c) {
+    return categoryRepository.edit(c);
+  }
+
+  public void delete(int id) {
+    categoryRepository.delete(id);
+  }
 }

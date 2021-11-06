@@ -25,4 +25,12 @@ public class CategoryRepository {
   public Category save(Category c) {
     return categoryCrudRepository.save(c);
   }
+
+  public Category edit(Category c) {
+    return categoryCrudRepository.save(c);
+  }
+
+  public void delete(int id) {
+    categoryCrudRepository.deleteById(id);
+  }
 }

@@ -34,4 +34,12 @@ public class ReservationService {
       }
     }
   }
+
+  public Reservation edit(Reservation r) {
+    return reservationRepository.edit(r);
+  }
+
+  public void delete(int id) {
+    reservationRepository.delete(id);
+  }
 }

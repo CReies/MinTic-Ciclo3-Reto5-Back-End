@@ -25,4 +25,12 @@ public class BoatRepository {
   public Boat save(Boat b) {
     return boatCrudRepository.save(b);
   }
+
+  public Boat edit(Boat b) {
+    return boatCrudRepository.save(b);
+  }
+
+  public void delete(int id) {
+    boatCrudRepository.deleteById(id);
+  }
 }

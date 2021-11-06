@@ -34,4 +34,12 @@ public class MessageService {
       }
     }
   }
+
+  public Message edit(Message m) {
+    return messageRepository.edit(m);
+  }
+
+  public void delete(int id) {
+    messageRepository.delete(id);
+  }
 }

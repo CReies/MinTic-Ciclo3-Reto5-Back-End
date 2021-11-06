@@ -34,4 +34,12 @@ public class BoatService {
       }
     }
   }
+
+  public Boat edit(Boat b) {
+    return boatRepository.edit(b);
+  }
+
+  public void delete(int id) {
+    boatRepository.delete(id);
+  }
 }

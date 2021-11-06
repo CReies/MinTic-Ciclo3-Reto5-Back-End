@@ -34,4 +34,12 @@ public class ClientService {
       }
     }
   }
+
+  public Client edit(Client c) {
+    return clientRepository.edit(c);
+  }
+
+  public void delete(int id) {
+    clientRepository.delete(id);
+  }
 }

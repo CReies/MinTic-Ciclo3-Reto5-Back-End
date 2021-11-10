@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.mintic.ciclo3.model.Reservation;
+import com.mintic.ciclo3.model.auxiliar.CountClient;
+import com.mintic.ciclo3.model.auxiliar.ReportStatus;
 import com.mintic.ciclo3.service.ReservationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,21 @@ public class ReservationController {
   @GetMapping("/{id}")
   public Optional<Reservation> getReservation(@PathVariable("id") int id) {
     return reservationService.getReservation(id);
+  }
+
+  @GetMapping("/report-dates/{date1}/{date2}")
+  public List<Reservation> getReservationPeriod(@PathVariable("date1") String d1, @PathVariable("date2") String d2) {
+    return reservationService.getReservationPeriod(d1, d2);
+  }
+
+  @GetMapping("/report-status")
+  public ReportStatus getReservationStatus() {
+    return reservationService.getReservationStatus();
+  }
+
+  @GetMapping("/report-clients")
+  public List<CountClient> getReservationClient() {
+    return reservationService.getReservationClient();
   }
 
   @PostMapping("/save")
